@@ -1,0 +1,106 @@
+---
+interface Props {
+  images: string[];
+}
+const { images } = Astro.props;
+const carouselId = `carousel-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<div class="relative" id={carouselId}>
+  <div
+    class="absolute w-[300px] h-[300px] bg-purple-500/20 blur-[100px] rounded-full"
+  >
+  </div>
+
+  <div class="relative z-10 rounded-2xl border border-white/10 bg-white/5 p-3">
+    <div
+      class="carousel-main relative w-full h-[420px] rounded-xl overflow-hidden bg-transparent flex items-center justify-center"
+    >
+    </div>
+    {
+      images.map((src, i) => (
+        <img
+          src={src}
+          alt="Comunidad"
+          class="carousel-img absolute inset-0 w-full h-full object-contain transition-opacity duration-700"
+          style={`opacity:${i === 0 ? 1 : 0}`}
+          data-index={i}
+        />
+      ))
+    }
+
+    <button
+      class="carousel-prev absolute left-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-black/40 text-white/80 hover:bg-black/60"
+      >‹</button
+    >
+    <button
+      class="carousel-next absolute right-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-black/40 text-white/80 hover:bg-black/60"
+      >›</button
+    >
+
+    <div class="absolute bottom-2 left-1/2 -translate-x-1/2 z-20 flex gap-1.5">
+      {
+        images.map((_, i) => (
+          <span
+            class={`dot w-2 h-2 rounded-full transition ${i === 0 ? "bg-white/80" : "bg-white/30"}`}
+            data-index={i}
+          />
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<script>
+  function initCarousel(root: HTMLElement) {
+    const slides = root.querySelectorAll<HTMLImageElement>(".carousel-img");
+    const dots = root.querySelectorAll<HTMLSpanElement>(".dot");
+    const prevBtn = root.querySelector(".carousel-prev");
+    const nextBtn = root.querySelector(".carousel-next");
+
+    let current = 0;
+    let autoplay: ReturnType<typeof setInterval>;
+    const total = slides.length;
+
+    const goTo = (i: number) => {
+      current = (i + total) % total;
+      slides.forEach(
+        (img, idx) => (img.style.opacity = idx === current ? "1" : "0"),
+      );
+      dots.forEach((d, idx) =>
+        d.classList.toggle("bg-white/80", idx === current),
+      );
+      dots.forEach((d, idx) =>
+        d.classList.toggle("bg-white/30", idx !== current),
+      );
+    };
+
+    const reset = (fn: () => void) => () => {
+      fn();
+      clearInterval(autoplay);
+      autoplay = setInterval(() => goTo(current + 1), 4000);
+    };
+
+    nextBtn?.addEventListener(
+      "click",
+      reset(() => goTo(current + 1)),
+    );
+    prevBtn?.addEventListener(
+      "click",
+      reset(() => goTo(current - 1)),
+    );
+    dots.forEach((d) =>
+      d.addEventListener(
+        "click",
+        reset(() => goTo(Number(d.dataset.index))),
+      ),
+    );
+
+    goTo(0);
+    autoplay = setInterval(() => goTo(current + 1), 4000);
+  }
+
+  document
+    .querySelectorAll<HTMLElement>('[id^="carousel-"]')
+    .forEach(initCarousel);
+</script>

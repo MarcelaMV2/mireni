@@ -1,17 +1,33 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Hero from '../components/sections/Hero.astro';
+import Socials from '../components/sections/Socials.astro';
+import About from '../components/sections/About.astro';
+import Comunity from '../components/sections/Comunity.astro';
+import ExperienciaA from '../components/sections/ExperienciaA.astro';
+import ExperienciaB from '../components/sections/ExperienciaB.astro';
+import ExperienciaC from '../components/sections/ExperienciaC.astro';
+import Background from '../components/layout/Background.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout>
+
+  <!-- BACKGROUND GLOBAL (FESTI PRO STYLE) -->
+  <Background />
+
+  <!-- HEADER -->
+  <Header />
+
+  <!-- CONTENIDO -->
+  <main class="relative z-10">
+    <Hero />
+    <Socials />
+    <About />
+    <Comunity />
+    <ExperienciaA />
+    <ExperienciaB />
+    <ExperienciaC />
+  </main>
+
+</BaseLayout>

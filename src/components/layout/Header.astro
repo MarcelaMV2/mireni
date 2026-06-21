@@ -1,0 +1,61 @@
+---
+import { Moon, Sun } from "lucide-astro";
+---
+
+<header class="fixed top-0 w-full z-50">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <div class="mt-4 flex items-center justify-between px-6 py-3 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10">
+
+      <!-- LOGO -->
+      <a href="/" class="text-white font-bold">
+        MiPortafolio
+      </a>
+
+      <!-- NAV -->
+      <nav class="hidden md:flex gap-8 text-sm text-white/70">
+        <a href="#inicio">Inicio</a>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <!-- ACTIONS -->
+      <div class="flex items-center gap-3">
+
+        <!-- THEME TOGGLE -->
+        <button
+          id="themeToggle"
+          class="w-10 h-10 flex items-center justify-center rounded-xl bg-white/10"
+        >
+          <Moon size={18} class="text-white" />
+        </button>
+
+        <a href="#contacto" class="px-5 py-2 rounded-xl bg-purple-500 text-white text-sm">
+          Contacto
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<!-- THEME SCRIPT (FUNCIONA SIN CONFIG EXTRA) -->
+<script is:inline>
+  const root = document.documentElement;
+  const btn = document.getElementById("themeToggle");
+
+  const setTheme = (theme) => {
+    root.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  };
+
+  // init
+  setTheme(localStorage.getItem("theme") || "dark");
+
+  btn?.addEventListener("click", () => {
+    const current = root.getAttribute("data-theme");
+    setTheme(current === "dark" ? "light" : "dark");
+  });
+</script>

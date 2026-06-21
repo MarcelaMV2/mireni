@@ -1,0 +1,15 @@
+<div class="fixed inset-0 -z-10 overflow-hidden">
+
+  <!-- BLOBS PRINCIPALES -->
+  <div class="blob purple"></div>
+  <div class="blob pink"></div>
+  <div class="blob purple-2"></div>
+
+  <!-- PARTÍCULAS -->
+  <div class="particles">
+    {Array.from({ length: 25 }).map((_, i) => (
+      <span class="particle" style={`--i:${i}`}></span>
+    ))}
+  </div>
+
+</div>

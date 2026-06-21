@@ -1,0 +1,33 @@
+---
+import Carousel from "../ui/Carousel.astro";
+import type { Community } from "../../data/communities";
+
+interface Props extends Community {}
+
+const { badge, title, description, extra, tags, images, reverse } = Astro.props;
+---
+
+<div class={`grid grid-cols-1 md:grid-cols-2 gap-10 items-center ${reverse ? "md:[&>*:first-child]:order-2" : ""}`}>
+  <!-- LEFT: INFO -->
+  <div>
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/70 text-sm">
+      <span class="w-2 h-2 bg-purple-400 rounded-full"></span>
+      {badge}
+    </div>
+
+    <h3 class="mt-6 text-2xl md:text-3xl font-bold text-white">{title}</h3>
+
+    <p class="mt-4 text-white/60 leading-relaxed">{description}</p>
+
+    {extra && <p class="mt-4 text-white/60 leading-relaxed">{extra}</p>}
+
+    <div class="mt-6 flex gap-3 flex-wrap">
+      {tags.map((tag) => (
+        <span class="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-sm">{tag}</span>
+      ))}
+    </div>
+  </div>
+
+  <!-- RIGHT: CARRUSEL -->
+  <Carousel images={images} />
+</div>
