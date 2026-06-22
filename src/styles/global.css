@@ -134,3 +134,44 @@ body {
 .rotate-y-180 {
   transform: rotateY(180deg);
 }
+
+/* =========================
+   CSS VARIABLES SEMÁNTICAS
+========================= */
+[data-theme="dark"] {
+  --color-text-primary: #ffffff;
+  --color-text-secondary: rgba(255,255,255,0.55);
+  --color-text-muted: rgba(255,255,255,0.30);
+  --color-text-faint: rgba(255,255,255,0.20);
+  --color-border: rgba(255,255,255,0.10);
+  --color-border-hover: rgba(255,255,255,0.25);
+  --color-surface: rgba(255,255,255,0.05);
+  --color-badge-bg: rgba(0,0,0,0.50);
+  --color-badge-text: rgba(255,255,255,0.60);
+  --color-link: rgba(255,255,255,0.50);
+  --color-link-hover: #ffffff;
+  --color-repo-private: rgba(255,255,255,0.20);
+}
+
+[data-theme="light"] {
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #334155;
+  --color-text-muted: #64748b;
+  --color-text-faint: #94a3b8;
+  --color-border: rgba(15,23,42,0.12);
+  --color-border-hover: rgba(15,23,42,0.30);
+  --color-surface: rgba(15,23,42,0.04);
+  --color-badge-bg: rgba(15,23,42,0.08);
+  --color-badge-text: #334155;
+  --color-link: #64748b;
+  --color-link-hover: #0f172a;
+  --color-repo-private: #94a3b8;
+}
+
+/* Clases semánticas */
+.text-primary    { color: var(--color-text-primary); }
+.text-secondary  { color: var(--color-text-secondary); }
+.text-muted-sem  { color: var(--color-text-muted); }
+.text-faint      { color: var(--color-text-faint); }
+.border-sem      { border-color: var(--color-border); }
+.surface         { background: var(--color-surface); }

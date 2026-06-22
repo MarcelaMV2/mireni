@@ -1,58 +1,85 @@
-<section class="py-24">
-  <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-3xl md:text-4xl font-bold text-white mb-10">
-      Experiencia
-    </h2>
-    <div class="grid md:grid-cols-2 gap-8">
-      <!-- CARD PROGRAMACIÓN -->
-      <div class="group perspective">
-        <div class="relative h-[260px] transition-transform duration-700 preserve-3d group-hover:rotate-y-180">
+---
+const programmingRepoUrl = "https://marcelamv2.github.io/SIS100-AUXILIATURA/";
+const databaseRepoUrl = "https://marcelamv2.github.io/SIS304-AUXILIATURA/";
+---
 
-          <!-- FRONT: imagen + título -->
-          <div class="absolute inset-0 backface-hidden rounded-2xl overflow-hidden border border-white/10 bg-white/5 flex flex-col">
-            <img src="/images/aiesec1.JPG" alt="Programación" class="w-full h-[180px] object-cover" />
-            <div class="flex-1 flex flex-col items-center justify-center gap-1">
-              <h3 class="text-white text-xl font-semibold">Programación</h3>
-              <span class="text-white/40 text-sm">Auxiliar de docencia desde 2024</span>
+<section class="py-2" id="experiencia">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="mb-10 text-3xl font-bold text-white md:text-4xl">Experiencia</h2>
+    <p class="mb-10 text-lg leading-relaxed text-white/60">
+      Desde 2024 soy auxiliar de docencia en las materias de Programación Básica
+      y Base de Datos, un rol que me apasiona profundamente. También formo parte
+      de la Sociedad Científica de la carrera, donde trabajamos en proyectos de
+      investigación y desarrollo. Cada una de estas experiencias me ha enseñado
+      que compartir conocimiento es tan importante como adquirirlo.
+    </p>
+
+    <div class="grid gap-8 md:grid-cols-2">
+      <div class="group perspective">
+        <div class="relative h-[300px] preserve-3d transition-transform duration-700 group-hover:rotate-y-180">
+          <div class="absolute inset-0 backface-hidden flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+            <img
+              src="/images/sis100.jpeg"
+              alt="Programación"
+              class="h-[220px] w-full object-cover"
+            />
+            <div class="flex flex-1 flex-col items-center justify-center gap-1">
+              <h3 class="text-xl font-semibold text-white">Programación</h3>
+              <span class="text-sm text-white/40">Auxiliar de docencia desde 2024</span>
             </div>
           </div>
 
-          <!-- BACK: SOLO texto, fondo blanco, SIN imagen -->
-          <div class="absolute inset-0 rotate-y-180 backface-hidden rounded-2xl bg-white p-6 flex items-center">
-            <p class="text-gray-700 leading-relaxed">
+          <div class="absolute inset-0 rotate-y-180 backface-hidden flex flex-col justify-between rounded-2xl bg-white p-6">
+            <p class="leading-relaxed text-gray-700">
               Desde 2024 soy auxiliar de docencia en lógica, algoritmos y
-              resolución de problemas. Disfruto mucho compartir mi
-              conocimiento y experiencia con mis estudiantes, y cada día
-              ellos me motivan a seguir creciendo para poder darles lo mejor.
+              resolución de problemas. Disfruto mucho compartir mi conocimiento
+              y experiencia con mis estudiantes, y cada día ellos me motivan a
+              seguir creciendo para poder darles lo mejor.
             </p>
-          </div>
 
+            <a
+              href={programmingRepoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-6 inline-flex w-fit items-center rounded-xl bg-purple-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-purple-600"
+            >
+              Ver repositorio de la materia
+            </a>
+          </div>
         </div>
       </div>
 
-      <!-- CARD BD -->
       <div class="group perspective">
-        <div class="relative h-[260px] transition-transform duration-700 preserve-3d group-hover:rotate-y-180">
-
-          <!-- FRONT: imagen + título -->
-          <div class="absolute inset-0 backface-hidden rounded-2xl overflow-hidden border border-white/10 bg-white/5 flex flex-col">
-            <img src="/images/aiesec2.png" alt="Bases de Datos" class="w-full h-[180px] object-cover" />
-            <div class="flex-1 flex flex-col items-center justify-center gap-1">
-              <h3 class="text-white text-xl font-semibold">Bases de Datos</h3>
-              <span class="text-white/40 text-sm">Auxiliar de docencia desde 2024</span>
+        <div class="relative h-[300px] preserve-3d transition-transform duration-700 group-hover:rotate-y-180">
+          <div class="absolute inset-0 backface-hidden flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+            <img
+              src="/images/sis100.png"
+              alt="Bases de Datos"
+              class="h-[220px] w-full object-cover"
+            />
+            <div class="flex flex-1 flex-col items-center justify-center gap-1">
+              <h3 class="text-xl font-semibold text-white">Bases de Datos</h3>
+              <span class="text-sm text-white/40">Auxiliar de docencia desde 2024</span>
             </div>
           </div>
 
-          <!-- BACK: SOLO texto, fondo blanco, SIN imagen -->
-          <div class="absolute inset-0 rotate-y-180 backface-hidden rounded-2xl bg-white p-6 flex items-center">
-            <p class="text-gray-700 leading-relaxed">
+          <div class="absolute inset-0 rotate-y-180 backface-hidden flex flex-col justify-between rounded-2xl bg-white p-6">
+            <p class="leading-relaxed text-gray-700">
               Apoyo en SQL, modelado relacional y consultas, ayudando a mis
-              estudiantes a entender estos conceptos desde la práctica.
-              Disfruto mucho ser auxiliar de esta materia y ver cómo van
-              ganando confianza con cada ejercicio.
+              estudiantes a entender estos conceptos desde la práctica. Disfruto
+              mucho ser auxiliar de esta materia y ver cómo van ganando
+              confianza con cada ejercicio.
             </p>
-          </div>
 
+            <a
+              href={databaseRepoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-6 inline-flex w-fit items-center rounded-xl bg-purple-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-purple-600"
+            >
+              Ver repositorio de la materia
+            </a>
+          </div>
         </div>
       </div>
     </div>

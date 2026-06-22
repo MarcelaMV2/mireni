@@ -1,14 +1,14 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import Background from '../components/layout/Background.astro';
+import Footer from '../components/layout/Footer.astro';
 import Header from '../components/layout/Header.astro';
-import Hero from '../components/sections/Hero.astro';
-import Socials from '../components/sections/Socials.astro';
 import About from '../components/sections/About.astro';
 import Comunity from '../components/sections/Comunity.astro';
-import ExperienciaA from '../components/sections/ExperienciaA.astro';
 import ExperienciaB from '../components/sections/ExperienciaB.astro';
-import ExperienciaC from '../components/sections/ExperienciaC.astro';
-import Background from '../components/layout/Background.astro';
+import Hero from '../components/sections/Hero.astro';
+import Projects from '../components/sections/Projects.astro';
+import Socials from '../components/sections/Socials.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout>
@@ -25,9 +25,10 @@ import Background from '../components/layout/Background.astro';
     <Socials />
     <About />
     <Comunity />
-    <ExperienciaA />
     <ExperienciaB />
-    <ExperienciaC />
+    <Projects />
   </main>
+
+  <Footer />
 
 </BaseLayout>

@@ -48,7 +48,7 @@ export const communities: Community[] = [
     description:
       "Soy organizer de GDG Sucre (Google Developer Groups), donde participo activamente en distintas áreas del equipo: marketing, logística, acreditación, escenografía y desarrollo web — esta última siendo el área en la que más me enfoco y disfruto aportar. Formar parte de GDG me ha permitido conectar con otros desarrolladores de la región, aprender de eventos como DevFest y Google I/O Extended, y fortalecer mis habilidades tanto técnicas como de organización trabajando en equipo bajo presión y tiempos ajustados.",
     tags: ["Eventos", "Networking", "Comunidad Tech"],
-    images: ["/images/gdg1.jpeg", "/images/gdg2.jpeg", "/images/gdg3.jpeg"],
+    images: ["/images/gdg1.jpeg", "/images/gdg2.jpeg", "/images/gdg3.png"],
     reverse: true,
   },
   {
@@ -71,12 +71,18 @@ export const communities: Community[] = [
     description:
       "Actualmente soy voluntaria dentro de la comunidad de Microsoft Sucre (MUGB), donde ayudo en la organización de sus eventos. Aprovechando esta oportunidad, estoy tomando distintos cursos y explorando nuevas herramientas dentro del ecosistema Microsoft, ya que la comunidad nos brinda acceso a vouchers de certificación que me permiten seguir formándome. Esta experiencia me ha permitido conocer de cerca tecnologías como Azure y GitHub Copilot, además de seguir construyendo una red de contactos dentro del ecosistema tecnológico de Sucre.",
     tags: ["Microsoft", "Azure", "Certificaciones"],
-    images: ["/images/gdg1.jpeg", "/images/gdg2.jpeg", "/images/gdg3.jpeg"],
+    images: [
+      "/images/microsoft0.png",
+      "/images/microsoft1.png",
+      "/images/microsoft2.png",
+      "/images/microsoft3.png",
+      "/images/microsoft4.png",
+    ],
     reverse: true,
   },
   {
-    badge: "Hackaton y programas de innovación",
-    title: "Colaboración en eventos Google Developer Groups",
+    badge: "Participación activa",
+    title: "Hackaton y programas de innovación",
     description:
       "A lo largo de mi camino en tecnología he participado en distintos programas de innovación y hackatones, buscando seguir generando nuevas experiencias, conociendo personas de las que puedo aprender y explorando nuevas tecnologías. Mi primer hackatón fue en la CCBOL de Sucre, Bolivia, y más adelante participé en el Build with AI Bolivia, en Santa Cruz. En ambos eventos, mi equipo obtuvo mención honorífica. Más adelante tuve la oportunidad de formar parte de TECH CONNECT, un programa organizado por la Embajada de Estados Unidos en Sucre que marcó bastante mi crecimiento dentro del ámbito tecnológico.",
     tags: ["Hackatones", "Innovación", "Mención Honorífica"],
@@ -85,6 +91,7 @@ export const communities: Community[] = [
       "/images/hack2.jpeg",
       "/images/hack3.jpeg",
       "/images/tech3.jpeg",
+      "/images/hack4.jpg",
     ],
   },
 ];
