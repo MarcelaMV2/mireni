@@ -2,167 +2,216 @@
 const projects = [
   {
     title: "Sansa Designs",
+    mark: "SD",
     type: "E-commerce",
-    stack: "NestJS · Vue",
-    description:
-      "Sistema de gestión integral para un emprendimiento textil artesanal boliviano. Automatiza inventario, proveedores, pedidos y pagos con reportes automáticos y catálogo centralizado.",
+    stack: ["NestJS", "Vue", "MySQL"],
+    description: "Sistema de gestión integral para un emprendimiento textil artesanal boliviano.",
+    detail: "Centraliza el catálogo, inventario, proveedores, pedidos y pagos para simplificar la operación diaria del emprendimiento y mantener la información organizada.",
+    highlights: ["Control de inventario y proveedores", "Gestión de pedidos y pagos", "Reportes automáticos y catálogo centralizado"],
     image: "/images/sansa.png",
     github: "https://github.com/MarcelaMV2/sis257_tienda_textiles",
   },
   {
     title: "GogoPlay",
+    mark: "GP",
     type: "E-commerce",
-    stack: "NestJS · Vue",
-    description:
-      "Plataforma de venta online de juguetes con gestión de productos, carrito de compras y procesamiento de pedidos. Experiencia de compra fluida con administración eficiente del catálogo.",
+    stack: ["NestJS", "Vue"],
+    description: "Plataforma de venta online de juguetes con una experiencia de compra fluida.",
+    detail: "Aplicación web para administrar un catálogo de juguetes y acompañar al usuario durante todo el proceso de compra.",
+    highlights: ["Administración de productos", "Carrito de compras", "Procesamiento y seguimiento de pedidos"],
     image: "/images/gogoplay.png",
     github: "https://github.com/MarcelaMV2/ecommerceSIS324-GoGoPlay",
   },
   {
     title: "Nexo",
-    type: "Reclutamiento automatizado",
-    stack: "Laravel · React · n8n",
-    description:
-      "App de reclutamiento inteligente con formularios personalizados y validaciones dinámicas. n8n actúa como motor de decisiones: agenda entrevistas o envía rechazos automáticamente. Los candidatos pueden reprogramar su cita de forma autónoma.",
+    mark: "NX",
+    type: "Reclutamiento IA",
+    stack: ["Laravel", "React", "n8n"],
+    description: "Aplicación de reclutamiento inteligente con validaciones y decisiones automatizadas.",
+    detail: "Los formularios se adaptan al proceso de selección y n8n funciona como motor de decisiones para coordinar automáticamente las siguientes etapas.",
+    highlights: ["Formularios y validaciones dinámicas", "Agenda o rechazo automatizado", "Reprogramación autónoma de entrevistas"],
     image: "/images/nexo.png",
     github: "https://github.com/MarcelaMV2/frontend_nexo",
   },
   {
     title: "Ingeniería Económica",
-    type: "Herramienta financiera",
-    stack: "Svelte",
-    description:
-      "Calculadora web para análisis de indicadores financieros en ingeniería económica. Interfaz reactiva que facilita la evaluación de proyectos e inversiones.",
+    mark: "IE",
+    type: "Finanzas",
+    stack: ["Svelte", "JavaScript"],
+    description: "Calculadora web para analizar indicadores financieros y evaluar inversiones.",
+    detail: "Herramienta académica que reúne cálculos habituales de ingeniería económica en una interfaz rápida, clara y reactiva.",
+    highlights: ["Cálculo de indicadores financieros", "Evaluación de proyectos", "Interfaz reactiva y fácil de utilizar"],
     image: "/images/calculadora.png",
     github: null,
   },
   {
     title: "Venta de Boletos",
+    mark: "VB",
     type: "Microservicios",
-    stack: "Angular · NestJS",
-    description:
-      "Arquitectura de microservicios para gestión y venta de boletos. Servicios independientes y escalables con separación clara de responsabilidades.",
+    stack: ["Angular", "NestJS"],
+    description: "Arquitectura de microservicios para gestionar y vender boletos.",
+    detail: "Sistema distribuido que separa las responsabilidades del negocio en servicios independientes para facilitar su mantenimiento y escalabilidad.",
+    highlights: ["Servicios independientes", "Gestión centralizada de boletos", "Arquitectura modular y escalable"],
     image: "/images/microservicios.png",
     github: "https://github.com/Gonzales-Franz-Reinaldo/proyecto-microservicios",
   },
   {
     title: "MicroFinder",
+    mark: "MF",
     type: "App móvil",
-    stack: "React Native",
-    description:
-      "Aplicación móvil para visualizar en tiempo real las rutas de microbuses en la ciudad de Sucre, Bolivia. Navegación urbana más simple y accesible para todos.",
+    stack: ["React Native", "Mapas"],
+    description: "Aplicación móvil para visualizar rutas de microbuses en Sucre, Bolivia.",
+    detail: "Propuesta de movilidad urbana que facilita la búsqueda y visualización de recorridos para que desplazarse por la ciudad sea más sencillo.",
+    highlights: ["Consulta de rutas urbanas", "Visualización sobre mapas", "Experiencia móvil accesible"],
     image: "/images/microfinder.png",
     github: "https://github.com/MarcelaMV2/MicroFinder",
   },
 ];
 ---
 
-<section class="py-2" id="projects">
-  <div class="max-w-6xl mx-auto px-6">
-
-    <!-- Header -->
-    <div class="mb-12">
-      <span class="text-muted-sem text-sm tracking-widest uppercase font-mono">Proyectos</span>
-      <h2 class="text-3xl md:text-4xl font-bold text-primary mt-2">
-        Lo que he construido
-      </h2>
-      <p class="text-secondary mt-3 max-w-xl">
-        Proyectos académicos y personales donde apliqué distintas tecnologías para resolver problemas reales.
-      </p>
+<section class="pb-12 pt-8 md:pb-14 md:pt-10" id="projects" aria-labelledby="projects-title">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="mb-12 max-w-2xl">
+      <span class="text-muted-sem font-mono text-sm uppercase tracking-widest">Proyectos</span>
+      <h2 id="projects-title" class="mt-2 text-3xl font-bold text-primary md:text-4xl">Lo que he construido</h2>
+      <p class="mt-3 text-secondary">Selecciona una tarjeta para conocer el proyecto con más detalle.</p>
     </div>
 
-    <!-- Grid -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {projects.map((project) => (
-        <div class="proj-card group relative flex flex-col rounded-2xl overflow-hidden transition-all duration-300">
-
-          <!-- Imagen -->
-          <div class="relative h-44 overflow-hidden proj-img-bg">
-            <img
-              src={project.image}
-              alt={project.title}
-              class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
-            />
-            <!-- Fallback -->
-            <div class="hidden absolute inset-0 items-center justify-center proj-img-bg">
-              <span class="text-faint text-4xl font-bold font-mono">
-                {project.title.slice(0, 2).toUpperCase()}
-              </span>
-            </div>
-            <!-- Badge tipo -->
-            <span class="proj-badge absolute top-3 left-3 text-xs font-mono px-2 py-1 rounded-full">
-              {project.type}
-            </span>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {projects.map((project, index) => (
+        <article
+          class="project-card group flex cursor-pointer flex-col overflow-hidden rounded-2xl"
+          data-project-index={index}
+          tabindex="0"
+          role="button"
+          aria-label={`Ver detalles de ${project.title}`}
+        >
+          <div class="project-cover h-40 overflow-hidden">
+            <img src={project.image} alt={`Vista previa de ${project.title}`} class="h-full w-full object-cover" loading="lazy" />
           </div>
 
-          <!-- Contenido -->
-          <div class="flex flex-col flex-1 p-5 gap-3">
-            <div>
-              <h3 class="text-primary font-semibold text-lg leading-tight">{project.title}</h3>
-              <span class="text-muted-sem text-xs font-mono">{project.stack}</span>
-            </div>
-            <p class="text-secondary text-sm leading-relaxed flex-1">
-              {project.description}
-            </p>
+          <div class="flex flex-1 flex-col p-5">
+            <span class="mb-3 w-fit rounded-full px-3 py-1 font-mono text-xs project-type">{project.type}</span>
+            <h3 class="text-xl font-bold text-primary">{project.title}</h3>
+            <p class="mt-2 font-mono text-xs text-accent">{project.stack.join(" · ")}</p>
+            <p class="mt-4 flex-1 text-sm leading-relaxed text-secondary">{project.description}</p>
 
-            <!-- Footer -->
-            <div class="pt-2 proj-footer-border">
+            <div class="project-actions mt-5 grid grid-cols-2 gap-3 pt-4">
+              <button type="button" class="details-button rounded-xl px-4 py-2.5 text-sm font-medium" data-open-project={index}>Ver más</button>
               {project.github ? (
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="proj-link inline-flex items-center gap-2 text-sm transition-colors duration-200 group/link"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-                  </svg>
-                  <span class="group-hover/link:underline underline-offset-2">Ver repositorio</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-0 group-hover/link:opacity-100 transition-opacity -translate-x-1 group-hover/link:translate-x-0 transition-transform duration-200">
-                    <path d="M7 17L17 7M7 7h10v10"/>
-                  </svg>
+                <a href={project.github} target="_blank" rel="noopener noreferrer" class="code-button rounded-xl px-4 py-2.5 text-center text-sm font-medium" data-code-link>
+                  Código <span aria-hidden="true">↗</span>
                 </a>
               ) : (
-                <span class="proj-private text-xs font-mono">Repositorio privado</span>
+                <span class="private-button rounded-xl px-4 py-2.5 text-center text-sm">Privado</span>
               )}
             </div>
           </div>
-
-        </div>
+        </article>
       ))}
     </div>
-
   </div>
+
+  <dialog id="project-dialog" class="project-dialog m-auto w-[min(92vw,760px)] overflow-hidden rounded-3xl p-0">
+    <div class="relative">
+      <button type="button" class="dialog-close absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-xl text-xl" aria-label="Cerrar detalles">×</button>
+      <div class="dialog-cover h-52 overflow-hidden md:h-64">
+        <img id="dialog-image" src="" alt="" class="h-full w-full object-cover" />
+      </div>
+
+      <div class="p-6 md:p-8">
+        <span id="dialog-type" class="project-type mb-4 inline-flex rounded-full px-3 py-1 font-mono text-xs"></span>
+        <h3 id="dialog-title" class="text-3xl font-bold text-primary"></h3>
+        <p id="dialog-stack" class="mt-2 font-mono text-sm text-accent"></p>
+        <p id="dialog-detail" class="mt-6 leading-relaxed text-secondary"></p>
+
+        <p class="mt-6 font-mono text-xs uppercase tracking-widest text-muted-sem">Lo que construí</p>
+        <ul id="dialog-highlights" class="mt-3 space-y-2 text-secondary"></ul>
+
+        <a id="dialog-code" href="#" target="_blank" rel="noopener noreferrer" class="code-button mt-7 inline-flex rounded-xl px-5 py-3 text-sm font-medium">
+          Ver código fuente <span class="ml-2" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </dialog>
 </section>
 
+<script define:vars={{ projects }}>
+  const dialog = document.querySelector("#project-dialog");
+
+  if (dialog instanceof HTMLDialogElement) {
+    const title = dialog.querySelector("#dialog-title");
+    const type = dialog.querySelector("#dialog-type");
+    const stack = dialog.querySelector("#dialog-stack");
+    const detail = dialog.querySelector("#dialog-detail");
+    const image = dialog.querySelector("#dialog-image");
+    const highlights = dialog.querySelector("#dialog-highlights");
+    const code = dialog.querySelector("#dialog-code");
+
+    const openProject = (index) => {
+      const project = projects[index];
+      if (!project) return;
+      title.textContent = project.title;
+      type.textContent = project.type;
+      stack.textContent = project.stack.join(" · ");
+      detail.textContent = project.detail;
+      image.src = project.image;
+      highlights.replaceChildren(...project.highlights.map((item) => {
+        const li = document.createElement("li");
+        li.textContent = `• ${item}`;
+        return li;
+      }));
+      code.hidden = !project.github;
+      if (project.github) code.href = project.github;
+      dialog.showModal();
+    };
+
+    document.querySelectorAll("[data-project-index]").forEach((card) => {
+      card.addEventListener("click", (event) => {
+        if (event.target.closest("[data-code-link]")) return;
+        openProject(Number(card.dataset.projectIndex));
+      });
+      card.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openProject(Number(card.dataset.projectIndex));
+        }
+      });
+    });
+
+    dialog.querySelector(".dialog-close")?.addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", (event) => {
+      const bounds = dialog.getBoundingClientRect();
+      const outside = event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom;
+      if (outside) dialog.close();
+    });
+  }
+</script>
+
 <style>
-  .proj-card {
+  .project-card, .project-dialog {
+    color: var(--color-text-primary);
     border: 1px solid var(--color-border);
-    background: var(--color-surface);
+    background: color-mix(in srgb, #160b29 88%, transparent);
   }
-  .proj-card:hover {
-    border-color: var(--color-border-hover);
-  }
-  .proj-img-bg {
-    background: var(--color-surface);
-  }
-  .proj-badge {
-    background: var(--color-badge-bg);
-    color: var(--color-badge-text);
-    border: 1px solid var(--color-border);
-    backdrop-filter: blur(8px);
-  }
-  .proj-footer-border {
-    border-top: 1px solid var(--color-border);
-  }
-  .proj-link {
-    color: var(--color-link);
-  }
-  .proj-link:hover {
-    color: var(--color-link-hover);
-  }
-  .proj-private {
-    color: var(--color-repo-private);
+  .project-card { transition: transform 220ms ease, border-color 220ms ease; }
+  .project-card:hover { transform: translateY(-4px); border-color: rgba(168, 85, 247, 0.5); }
+  .project-card:focus-visible { outline: 2px solid #c084fc; outline-offset: 4px; }
+  .project-type { color: #e9d5ff; border: 1px solid rgba(255,255,255,.12); background: rgba(11, 5, 20, .68); }
+  .project-actions { border-top: 1px solid var(--color-border); }
+  .details-button { color: var(--color-text-primary); border: 1px solid var(--color-border); }
+  .details-button:hover { background: rgba(168, 85, 247, .12); }
+  .code-button { color: #fff; background: linear-gradient(135deg, #a855f7, #ec4899); }
+  .private-button { color: var(--color-text-muted); border: 1px solid var(--color-border); }
+  .text-accent { color: #c084fc; }
+  .project-dialog { max-height: 90vh; overflow-y: auto; }
+  .project-dialog::backdrop { background: rgba(5, 2, 12, .78); backdrop-filter: blur(8px); }
+  .dialog-close { color: #fff; border: 1px solid rgba(255,255,255,.14); background: rgba(10, 5, 18, .75); }
+  :global([data-theme="light"]) .project-card,
+  :global([data-theme="light"]) .project-dialog { background: rgba(255,255,255,.92); }
+  :global([data-theme="light"]) .text-accent { color: #7e22ce; }
+  @media (prefers-reduced-motion: reduce) {
+    .project-card { transition: none; }
+    .project-card:hover { transform: none; }
   }
 </style>

@@ -1,18 +1,242 @@
 ---
-import ComunitySection from "./ComunitySection.astro";
 import { communities } from "../../data/communities";
+import { MousePointerClick } from "lucide-astro";
 ---
 
-<section class="py-24" id="comunidad">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="mb-10">
-      <h2 class="text-3xl md:text-4xl font-bold text-white">Comunidad</h2>
-      <p class="text-white/60 mt-2">Espacios donde colaboro y comparto conocimiento</p>
+<section class="pb-12 pt-10 md:pb-16 md:pt-12" id="comunidad" aria-labelledby="community-title">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="mb-12 max-w-2xl">
+      <span class="text-muted-sem font-mono text-sm uppercase tracking-widest">Comunidad</span>
+      <h2 id="community-title" class="mt-2 text-3xl font-bold text-primary md:text-4xl">
+        Espacios donde crezco y colaboro
+      </h2>
+      <p class="mt-3 text-secondary">
+        Selecciona una comunidad para conocer mi participación y ver algunos momentos.
+      </p>
     </div>
-    <div class="space-y-24">
-      {communities.map((comunity) => (
-        <ComunitySection {...comunity} />
+
+    <div class="community-piano" data-community-piano>
+      {communities.map((community, index) => (
+        <article
+          class:list={["community-column", { "is-active": index === 0 }]}
+          style={`--community-a:${community.colors[0]};--community-b:${community.colors[1]}`}
+          data-community
+        >
+          <button
+            type="button"
+            class="community-trigger absolute inset-0 z-10 flex flex-col items-center justify-center gap-5"
+            aria-expanded={index === 0 ? "true" : "false"}
+            aria-label={`Abrir ${community.title}`}
+          >
+            <span class="vertical-label">{community.short}</span>
+            <span class="open-indicator" aria-hidden="true">+</span>
+            <MousePointerClick class="cursor-hint" size={18} strokeWidth={1.7} aria-hidden="true" />
+          </button>
+
+          <button type="button" class="community-close" aria-label={`Cerrar ${community.title}`}>×</button>
+
+          <div class="community-detail">
+            <span class="community-role">{community.badge}</span>
+            <h3 class="mt-2 text-2xl font-bold uppercase text-primary md:text-3xl">{community.title}</h3>
+            <p class="mt-4 max-w-2xl text-sm leading-relaxed text-secondary">{community.description}</p>
+
+            <div class="mt-5 flex flex-wrap gap-2">
+              {community.tags.map((tag) => <span class="community-tag">{tag}</span>)}
+            </div>
+
+            <div class="community-gallery mt-6">
+              {community.images.slice(0, 4).map((image, index) => (
+                <img
+                  src={image}
+                  alt={`${community.title}, fotografía ${index + 1}`}
+                  class="aspect-square h-full w-full rounded-xl object-cover"
+                  loading="lazy"
+                />
+              ))}
+            </div>
+          </div>
+        </article>
       ))}
     </div>
   </div>
 </section>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-community-piano]").forEach((piano) => {
+    const columns = piano.querySelectorAll<HTMLElement>("[data-community]");
+
+    const closeAll = () => {
+      columns.forEach((column) => {
+        column.classList.remove("is-active");
+        column.querySelector(".community-trigger")?.setAttribute("aria-expanded", "false");
+      });
+    };
+
+    columns.forEach((column) => {
+      const trigger = column.querySelector<HTMLButtonElement>(".community-trigger");
+      const close = column.querySelector<HTMLButtonElement>(".community-close");
+
+      trigger?.addEventListener("click", () => {
+        closeAll();
+        column.classList.add("is-active");
+        trigger.setAttribute("aria-expanded", "true");
+      });
+
+      close?.addEventListener("click", () => {
+        column.classList.remove("is-active");
+        trigger?.setAttribute("aria-expanded", "false");
+        trigger?.focus();
+      });
+    });
+  });
+</script>
+
+<style>
+  .community-piano {
+    display: flex;
+    height: 430px;
+    gap: 3px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: 1.25rem;
+    background: var(--color-surface);
+  }
+
+  .community-column {
+    position: relative;
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.01));
+    transition: flex .6s cubic-bezier(.2,.8,.2,1), background .35s ease;
+  }
+
+  .community-column::before {
+    position: absolute;
+    inset: 0;
+    content: "";
+    opacity: 0;
+    background: radial-gradient(circle at 20% 90%, var(--community-a), transparent 65%);
+    transition: opacity .45s ease;
+  }
+
+  .community-column.is-active { flex: 7; }
+  .community-column.is-active::before { opacity: .25; }
+
+  .community-trigger {
+    color: var(--color-text-primary);
+    transition: opacity .25s ease;
+  }
+
+  .vertical-label {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .2em;
+  }
+
+  .open-indicator {
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border-hover);
+    border-radius: 999px;
+    animation: community-pulse 2.6s ease-in-out infinite;
+  }
+
+  .cursor-hint {
+    color: var(--color-text-muted);
+  }
+
+  .community-column.is-active .community-trigger {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .community-detail {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 2rem 2.25rem;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(2rem);
+    transition: opacity .3s ease .12s, transform .4s ease .12s;
+  }
+
+  .community-column.is-active .community-detail {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+  }
+
+  .community-role { color: var(--community-a); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; }
+  .community-tag { padding: .25rem .65rem; border: 1px solid var(--color-border); border-radius: 999px; color: var(--color-text-secondary); font-size: .7rem; }
+  .community-gallery { display: grid; max-width: 560px; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .65rem; }
+
+  .community-close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    z-index: 4;
+    display: none;
+    width: 2rem;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border);
+    border-radius: .6rem;
+    color: var(--color-text-primary);
+    background: rgba(10,6,20,.55);
+  }
+
+  .community-column.is-active .community-close { display: flex; }
+
+  :global([data-theme="light"]) .community-piano {
+    border-color: rgba(126, 34, 206, .16);
+    background: rgba(255, 255, 255, .42);
+    box-shadow: 0 18px 60px rgba(126, 34, 206, .06);
+  }
+
+  :global([data-theme="light"]) .community-column {
+    background: linear-gradient(180deg, rgba(126, 34, 206, .035), rgba(236, 72, 153, .018));
+  }
+
+  :global([data-theme="light"]) .community-column.is-active {
+    background: rgba(255, 255, 255, .58);
+  }
+
+  :global([data-theme="light"]) .community-close {
+    background: rgba(255, 255, 255, .82);
+  }
+
+  @keyframes community-pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 color-mix(in srgb, var(--community-a) 25%, transparent); }
+    50% { transform: scale(1.08); box-shadow: 0 0 0 7px transparent; }
+  }
+
+  @media (max-width: 767px) {
+    .community-piano { height: auto; flex-direction: column; }
+    .community-column { min-height: 76px; flex: none !important; transition: min-height .5s cubic-bezier(.2,.8,.2,1); }
+    .community-column.is-active { min-height: 590px; }
+    .community-trigger { flex-direction: row; justify-content: flex-start; padding: 0 1.25rem; }
+    .vertical-label { writing-mode: horizontal-tb; transform: none; }
+    .vertical-label { letter-spacing: .12em; }
+    .cursor-hint { display: none; }
+    .open-indicator { margin-left: auto; }
+    .community-detail { padding: 4rem 1.25rem 1.5rem; transform: translateY(1rem); }
+    .community-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .community-column, .community-detail, .community-trigger { transition: none; }
+    .open-indicator { animation: none; }
+  }
+</style>

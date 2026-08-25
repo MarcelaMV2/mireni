@@ -1,87 +1,183 @@
 ---
-const programmingRepoUrl = "https://marcelamv2.github.io/SIS100-AUXILIATURA/";
-const databaseRepoUrl = "https://marcelamv2.github.io/SIS304-AUXILIATURA/";
+import { BriefcaseBusiness, Building2, GraduationCap, Users } from "lucide-astro";
+
+const experiences = [
+  {
+    role: "Full-Stack Developer Intern",
+    organization: "10Minds",
+    period: "Feb. 2026 — Actualidad",
+    location: "Sucre, Chuquisaca · Presencial",
+    description:
+      "Desarrollo funcionalidades de frontend con Angular y backend con NestJS y GraphQL para una plataforma web comercial. Trabajo en autenticación, facturación y gestión de dispositivos, colaborando en todo el ciclo de desarrollo.",
+    tags: ["Angular", "NestJS", "GraphQL"],
+    icon: BriefcaseBusiness,
+    featured: true,
+  },
+  {
+    role: "Auxiliar de docencia — Bases de Datos II",
+    organization:
+      "Universidad Mayor, Real y Pontificia de San Francisco Xavier de Chuquisaca",
+    period: "Abr. 2024 — Actualidad",
+    location: "Sucre, Chuquisaca · Presencial",
+    description:
+      "Acompaño a estudiantes en SQL, procedimientos almacenados, triggers, vistas y transacciones con MySQL. También construí documentación práctica publicada mediante GitHub Pages.",
+    tags: ["MySQL", "SQL", "Docencia"],
+    icon: GraduationCap,
+    link: "https://marcelamv2.github.io/SIS304-AUXILIATURA/",
+  },
+  {
+    role: "Auxiliar de docencia — Programación Básica",
+    organization:
+      "Universidad Mayor, Real y Pontificia de San Francisco Xavier de Chuquisaca",
+    period: "Abr. 2024 — Actualidad",
+    location: "Sucre, Chuquisaca · Presencial",
+    description:
+      "Apoyo el aprendizaje de fundamentos de programación con PSeInt y C++. Reviso trabajos, acompaño sesiones de laboratorio y doy retroalimentación individual a más de 30 estudiantes por semestre.",
+    tags: ["C++", "PSeInt", "Mentoría"],
+    icon: Building2,
+    link: "https://marcelamv2.github.io/SIS100-AUXILIATURA/",
+  },
+  {
+    role: "Human Resources Manager",
+    organization: "AIESEC en Sucre",
+    period: "Jul. 2023 — Jun. 2024",
+    location: "Sucre, Chuquisaca · Híbrido",
+    description:
+      "Gestioné el reclutamiento y desarrollo de voluntarios del comité local. Esta experiencia fortaleció mis habilidades de liderazgo, coordinación de equipos y gestión de personas.",
+    tags: ["Liderazgo", "Recursos Humanos", "Trabajo en equipo"],
+    icon: Users,
+  },
+];
 ---
 
-<section class="py-2" id="experiencia">
-  <div class="max-w-6xl mx-auto px-6">
-    <h2 class="mb-10 text-3xl font-bold text-white md:text-4xl">Experiencia</h2>
-    <p class="mb-10 text-lg leading-relaxed text-white/60">
-      Desde 2024 soy auxiliar de docencia en las materias de Programación Básica
-      y Base de Datos, un rol que me apasiona profundamente. También formo parte
-      de la Sociedad Científica de la carrera, donde trabajamos en proyectos de
-      investigación y desarrollo. Cada una de estas experiencias me ha enseñado
-      que compartir conocimiento es tan importante como adquirirlo.
-    </p>
+<section class="relative pb-12 pt-10 md:pb-14 md:pt-12" id="experiencia" aria-labelledby="experiencia-title">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="mb-14 max-w-2xl">
+      <span class="text-muted-sem font-mono text-sm uppercase tracking-widest">Trayectoria</span>
+      <h2 id="experiencia-title" class="mt-2 text-3xl font-bold text-primary md:text-4xl">
+        Experiencia profesional
+      </h2>
+      <p class="mt-4 leading-relaxed text-secondary">
+        Experiencias donde combino desarrollo de software, enseñanza y liderazgo
+        para construir soluciones y compartir conocimiento.
+      </p>
+    </div>
 
-    <div class="grid gap-8 md:grid-cols-2">
-      <div class="group perspective">
-        <div class="relative h-[300px] preserve-3d transition-transform duration-700 group-hover:rotate-y-180">
-          <div class="absolute inset-0 backface-hidden flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-            <img
-              src="/images/sis100.jpeg"
-              alt="Programación"
-              class="h-[220px] w-full object-cover"
-            />
-            <div class="flex flex-1 flex-col items-center justify-center gap-1">
-              <h3 class="text-xl font-semibold text-white">Programación</h3>
-              <span class="text-sm text-white/40">Auxiliar de docencia desde 2024</span>
-            </div>
-          </div>
+    <div class="relative ml-3 md:ml-5">
+      <div class="timeline-line absolute bottom-5 left-0 top-5 w-px" aria-hidden="true"></div>
 
-          <div class="absolute inset-0 rotate-y-180 backface-hidden flex flex-col justify-between rounded-2xl bg-white p-6">
-            <p class="leading-relaxed text-gray-700">
-              Desde 2024 soy auxiliar de docencia en lógica, algoritmos y
-              resolución de problemas. Disfruto mucho compartir mi conocimiento
-              y experiencia con mis estudiantes, y cada día ellos me motivan a
-              seguir creciendo para poder darles lo mejor.
-            </p>
+      <ol class="space-y-8 md:space-y-10">
+        {experiences.map((experience) => {
+          const Icon = experience.icon;
+          return (
+            <li class="relative pl-9 md:pl-14">
+              <span
+                class:list={[
+                  "timeline-dot absolute -left-[7px] top-7 flex h-[15px] w-[15px] items-center justify-center rounded-full",
+                  { "timeline-dot-featured": experience.featured },
+                ]}
+                aria-hidden="true"
+              >
+                <span class="h-1.5 w-1.5 rounded-full bg-white" />
+              </span>
 
-            <a
-              href={programmingRepoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="mt-6 inline-flex w-fit items-center rounded-xl bg-purple-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-purple-600"
-            >
-              Ver repositorio de la materia
-            </a>
-          </div>
-        </div>
-      </div>
+              <article class="experience-entry py-5 md:py-7">
+                <div class="grid gap-6 md:grid-cols-[minmax(230px,0.8fr)_1.4fr] md:gap-10">
+                  <div>
+                    <div class="mb-4 flex items-center gap-3">
+                      <span class="experience-icon flex h-10 w-10 shrink-0 items-center justify-center rounded-xl">
+                        <Icon size={19} strokeWidth={1.8} aria-hidden="true" />
+                      </span>
+                      <span class="text-muted-sem font-mono text-xs uppercase tracking-wider">
+                        {experience.period}
+                      </span>
+                    </div>
 
-      <div class="group perspective">
-        <div class="relative h-[300px] preserve-3d transition-transform duration-700 group-hover:rotate-y-180">
-          <div class="absolute inset-0 backface-hidden flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-            <img
-              src="/images/sis100.png"
-              alt="Bases de Datos"
-              class="h-[220px] w-full object-cover"
-            />
-            <div class="flex flex-1 flex-col items-center justify-center gap-1">
-              <h3 class="text-xl font-semibold text-white">Bases de Datos</h3>
-              <span class="text-sm text-white/40">Auxiliar de docencia desde 2024</span>
-            </div>
-          </div>
+                    <h3 class="text-xl font-semibold leading-snug text-primary">{experience.role}</h3>
+                    <p class="text-accent mt-2 font-medium">{experience.organization}</p>
+                    <p class="text-muted-sem mt-1 text-sm">{experience.location}</p>
+                  </div>
 
-          <div class="absolute inset-0 rotate-y-180 backface-hidden flex flex-col justify-between rounded-2xl bg-white p-6">
-            <p class="leading-relaxed text-gray-700">
-              Apoyo en SQL, modelado relacional y consultas, ayudando a mis
-              estudiantes a entender estos conceptos desde la práctica. Disfruto
-              mucho ser auxiliar de esta materia y ver cómo van ganando
-              confianza con cada ejercicio.
-            </p>
+                  <div class="md:border-l md:border-[var(--color-border)] md:pl-10">
+                    <p class="leading-relaxed text-secondary">{experience.description}</p>
 
-            <a
-              href={databaseRepoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="mt-6 inline-flex w-fit items-center rounded-xl bg-purple-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-purple-600"
-            >
-              Ver repositorio de la materia
-            </a>
-          </div>
-        </div>
-      </div>
+                    <div class="mt-5 flex flex-wrap items-center gap-2">
+                      {experience.tags.map((tag) => <span class="experience-tag">{tag}</span>)}
+
+                      {experience.link && (
+                        <a
+                          href={experience.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="experience-link ml-auto text-sm font-medium"
+                        >
+                          Ver material <span aria-hidden="true">↗</span>
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </li>
+          );
+        })}
+      </ol>
     </div>
   </div>
 </section>
+
+<style>
+  .timeline-line {
+    background: linear-gradient(to bottom, #a855f7, #ec4899 55%, transparent);
+    opacity: 0.55;
+  }
+
+  .timeline-dot {
+    border: 2px solid #a855f7;
+    background: #7e22ce;
+    box-shadow: 0 0 0 5px color-mix(in srgb, #a855f7 14%, transparent);
+  }
+
+  .timeline-dot-featured {
+    border-color: #f472b6;
+    background: #db2777;
+    box-shadow: 0 0 0 5px color-mix(in srgb, #ec4899 18%, transparent),
+      0 0 24px color-mix(in srgb, #ec4899 35%, transparent);
+  }
+
+  .experience-entry {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  li:last-child .experience-entry { border-bottom: 0; }
+
+  .experience-icon {
+    color: #d8b4fe;
+    border: 1px solid color-mix(in srgb, #a855f7 35%, transparent);
+    background: color-mix(in srgb, #a855f7 14%, transparent);
+  }
+
+  .text-accent { color: #c084fc; }
+
+  .experience-tag {
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    color: #d8b4fe;
+    border: 1px solid color-mix(in srgb, #a855f7 24%, transparent);
+    background: color-mix(in srgb, #a855f7 11%, transparent);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.75rem;
+  }
+
+  .experience-link {
+    color: var(--color-link);
+    transition: color 180ms ease;
+  }
+
+  .experience-link:hover { color: var(--color-link-hover); }
+
+  :global([data-theme="light"]) .experience-icon,
+  :global([data-theme="light"]) .text-accent,
+  :global([data-theme="light"]) .experience-tag { color: #7e22ce; }
+
+</style>

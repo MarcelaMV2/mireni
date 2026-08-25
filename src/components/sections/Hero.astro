@@ -1,78 +1,203 @@
-<section class="relative pt-40 pb-24" id="inicio">
-  <div
-    class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
-  >
-    <!-- LEFT SIDE -->
-    <div>
-      <!-- BADGE -->
-      <div
-        class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-white/70 text-sm"
-      >
-        <span class="w-2 h-2 rounded-full bg-purple-400"></span>
-        Estudiante de Ing. de Sistemas
-      </div>
+---
+import { Icon } from "astro-icon/components";
+import { ArrowDown, Mail } from "lucide-astro";
 
-      <!-- TITLE -->
-      <h1
-        class="mt-6 text-5xl md:text-6xl font-extrabold leading-tight text-white"
-      >
-        Hola, soy <br />
-        <span
-          class="bg-gradient-to-r from-purple-400 via-pink-500 to-orange-400 bg-clip-text text-transparent"
-        >
-          Marcela Miranda
+const socials = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/marcela-miranda-veniz-015853352",
+    icon: "simple-icons:linkedin",
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/MarcelaMV2",
+    icon: "simple-icons:github",
+  },
+  {
+    label: "Instagram",
+    href: "https://instagram.com/mireni_mv",
+    icon: "simple-icons:instagram",
+  },
+];
+
+const stats = [
+  { value: "1+", label: "Año de experiencia" },
+  { value: "6+", label: "Comunidades tech" },
+  { value: "6", label: "Proyectos destacados" },
+  { value: "2+", label: "Hackatones" },
+];
+---
+
+<section class="relative pb-8 pt-36 md:pb-10 md:pt-40" id="inicio">
+  <span id="sobre-mi" class="absolute top-0" aria-hidden="true"></span>
+
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="grid items-center gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16">
+      <div class="relative mx-auto w-full max-w-[390px]">
+        <div class="portrait-glow absolute inset-8 -z-10 rounded-full blur-[90px]"></div>
+        <div class="portrait-frame relative aspect-[4/5] overflow-hidden rounded-[2rem]">
+          <img
+            src="/images/me.png"
+            alt="Marcela Miranda, desarrolladora de software"
+            class="h-full w-full object-contain object-bottom"
+            fetchpriority="high"
+          />
+        </div>
+        <span class="experience-badge absolute -bottom-3 right-4 rounded-full px-4 py-2 text-sm font-semibold">
+          +1 año
         </span>
-      </h1>
+      </div>
 
-      <!-- DESCRIPTION -->
-      <p class="mt-6 text-white/70 text-lg leading-relaxed max-w-xl">
-        Desarrolladora apasionada por la programación y la ciencia de datos.
-        Actualmente curso el último año de Ingeniería de Sistemas y realizo mi
-        pasantía en 10Minds, además de ser parte activa de distintas comunidades
-        tecnológicas.
-      </p>
+      <div>
+        <span class="availability inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm">
+          <span class="h-2 w-2 animate-pulse rounded-full bg-pink-400"></span>
+          Disponible para colaborar
+        </span>
 
-      <!-- BUTTONS -->
-      <div class="mt-8 flex flex-wrap gap-4">
-        <a
-          href="#comunidad"
-          class="px-6 py-3 rounded-xl
-          bg-purple-500 text-white font-medium
-          hover:scale-105 transition
-          shadow-lg shadow-purple-500/20"
-        >
-          Ver comunidades
-        </a>
-        <a
-          href="https://wa.link/e1c6ji"
-          class="px-6 py-3 rounded-xl
-          border border-white/15 text-white
-          hover:bg-white/10 transition"
-        >
-          Contacto
+        <h1 class="mt-6 text-5xl font-extrabold leading-[1.05] text-primary md:text-6xl">
+          Hola, soy
+          <span class="block bg-gradient-to-r from-purple-400 via-pink-500 to-orange-400 bg-clip-text text-transparent">
+            Marcela Miranda
+          </span>
+        </h1>
+
+        <p class="mt-5 text-xl font-medium text-accent md:text-2xl">
+          Full-Stack Developer · Docente auxiliar · Community Builder
+        </p>
+
+        <p class="mt-6 max-w-2xl text-base leading-relaxed text-secondary md:text-lg">
+          Estudiante de último año de Ingeniería de Sistemas y desarrolladora
+          apasionada por crear soluciones funcionales. Actualmente realizo mi
+          pasantía en 10Minds, acompaño a estudiantes en Programación y Bases de
+          Datos, y participo activamente en comunidades tecnológicas de Sucre.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href="mailto:mirandamarcela578@gmail.com"
+            class="primary-action inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-medium text-white"
+          >
+            <Mail size={17} aria-hidden="true" />
+            Contáctame
+          </a>
+
+          {socials.map((social) => (
+            <a
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Visitar mi perfil de ${social.label}`}
+              class="social-action inline-flex items-center gap-2 rounded-xl px-4 py-3 text-sm font-medium"
+            >
+              <Icon name={social.icon} class="h-4 w-4" />
+              {social.label}
+            </a>
+          ))}
+        </div>
+
+        <a href="#experiencia" class="mt-7 inline-flex items-center gap-2 text-sm text-muted-sem transition hover:text-primary">
+          Conoce mi experiencia
+          <ArrowDown size={16} aria-hidden="true" />
         </a>
       </div>
     </div>
 
-    <!-- RIGHT SIDE (AQUÍ VAN TUS IMÁGENES 3D) -->
-    <div class="relative flex justify-center items-center">
-      <div
-        class="absolute w-[400px] h-[400px] bg-purple-500/20 blur-[120px] rounded-full"
-      >
-      </div>
-      <div
-        class="absolute w-[300px] h-[300px] bg-pink-500/20 blur-[100px] rounded-full"
-      >
-      </div>
-      <div
-        class="relative z-10 w-full h-[420px] overflow-hidden border border-white/10 rounded-3xl bg-white/5 backdrop-blur-xl"
-      >
-        <img
-          src="/images/me.png"
-          alt="Foto de Marcela Miranda"
-          class="w-full h-full object-contain"
-        />
-      </div>
-    </div>
+    <dl class="stats-grid mt-12 grid grid-cols-2 overflow-hidden rounded-2xl md:grid-cols-4">
+      {stats.map((stat) => (
+        <div class="stat-item flex flex-col px-4 py-6 text-center md:px-6">
+          <dt class="text-sm text-secondary">{stat.label}</dt>
+          <dd class="stat-value order-first mb-1 text-3xl font-bold">{stat.value}</dd>
+        </div>
+      ))}
+    </dl>
   </div>
 </section>
+
+<style>
+  .portrait-glow {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.55), rgba(236, 72, 153, 0.35));
+  }
+
+  .portrait-frame,
+  .stats-grid {
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    backdrop-filter: blur(18px);
+  }
+
+  .portrait-frame {
+    background:
+      radial-gradient(circle at 50% 35%, rgba(168, 85, 247, 0.24), transparent 58%),
+      var(--color-surface);
+  }
+
+  .experience-badge,
+  .primary-action {
+    background: linear-gradient(135deg, #a855f7, #ec4899);
+    box-shadow: 0 12px 32px rgba(168, 85, 247, 0.24);
+  }
+
+  .availability {
+    color: #d8b4fe;
+    border: 1px solid rgba(168, 85, 247, 0.32);
+    background: rgba(168, 85, 247, 0.1);
+  }
+
+  .text-accent,
+  .stat-value {
+    color: #c084fc;
+  }
+
+  .primary-action,
+  .social-action {
+    transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+  }
+
+  .primary-action:hover,
+  .social-action:hover {
+    transform: translateY(-2px);
+  }
+
+  .social-action {
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+
+  .social-action:hover {
+    border-color: rgba(168, 85, 247, 0.48);
+    background: rgba(168, 85, 247, 0.1);
+  }
+
+  .stat-item + .stat-item {
+    border-left: 1px solid var(--color-border);
+  }
+
+  :global([data-theme="light"]) .availability,
+  :global([data-theme="light"]) .text-accent,
+  :global([data-theme="light"]) .stat-value {
+    color: #7e22ce;
+  }
+
+  @media (max-width: 767px) {
+    .stat-item:nth-child(3) {
+      border-left: 0;
+    }
+
+    .stat-item:nth-child(n + 3) {
+      border-top: 1px solid var(--color-border);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .primary-action,
+    .social-action {
+      transition: none;
+    }
+
+    .primary-action:hover,
+    .social-action:hover {
+      transform: none;
+    }
+  }
+</style>
