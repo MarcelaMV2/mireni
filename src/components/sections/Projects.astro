@@ -1,6 +1,29 @@
 ---
 const projects = [
   {
+    title: "MailCraft",
+    mark: "MC",
+    type: "Editor visual",
+    stack: ["Angular 21", "TypeScript", "GrapesJS", "Vitest"],
+    description: "Editor visual para crear plantillas de correo electrónico mediante bloques reutilizables.",
+    detail: "Aplicación web responsive para construir correos HTML arrastrando bloques al lienzo, personalizar sus propiedades y revisar el resultado en escritorio, tablet y móvil. Su arquitectura utiliza componentes standalone, Angular Signals y servicios inyectables.",
+    highlights: ["Editor drag and drop con bloques y columnas", "Inspector contextual de estilos y propiedades", "Historial con deshacer y rehacer", "Guardado local y exportación a HTML autocontenido"],
+    image: "/images/email.png",
+    github: "https://github.com/MarcelaMV2/email-template-builder",
+  },
+  {
+    title: "FIRST Global Robotics",
+    mark: "FG",
+    type: "Visualización de datos",
+    stack: ["Astro", "TypeScript", "Google Sheets", "Vercel"],
+    description: "Plataforma para visualizar y analizar resultados de una evaluación nacional de robótica.",
+    detail: "Transforma datos de evaluación almacenados en Google Sheets en una experiencia web clara e interactiva. Permite comparar el rendimiento de los equipos participantes de FIRST Global y consultar sus resultados por áreas técnicas.",
+    highlights: ["Ranking y puntaje acumulado de equipos", "Evaluaciones organizadas por áreas técnicas", "Consumo de datos desde Google Sheets en modo lectura", "Visualización histórica de resultados"],
+    image: "/images/first-global.png",
+    github: "https://github.com/MarcelaMV2/first-global",
+    demo: "https://first-global.vercel.app/",
+  },
+  {
     title: "Sansa Designs",
     mark: "SD",
     type: "E-commerce",
@@ -128,9 +151,14 @@ const projects = [
         <p class="mt-6 font-mono text-xs uppercase tracking-widest text-muted-sem">Lo que construí</p>
         <ul id="dialog-highlights" class="mt-3 space-y-2 text-secondary"></ul>
 
-        <a id="dialog-code" href="#" target="_blank" rel="noopener noreferrer" class="code-button mt-7 inline-flex rounded-xl px-5 py-3 text-sm font-medium">
-          Ver código fuente <span class="ml-2" aria-hidden="true">↗</span>
-        </a>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a id="dialog-code" href="#" target="_blank" rel="noopener noreferrer" class="code-button inline-flex rounded-xl px-5 py-3 text-sm font-medium">
+            Ver código fuente
+          </a>
+          <a id="dialog-demo" href="#" target="_blank" rel="noopener noreferrer" class="details-button inline-flex rounded-xl px-5 py-3 text-sm font-medium">
+            Ver demo
+          </a>
+        </div>
       </div>
     </div>
   </dialog>
@@ -147,6 +175,7 @@ const projects = [
     const image = dialog.querySelector("#dialog-image");
     const highlights = dialog.querySelector("#dialog-highlights");
     const code = dialog.querySelector("#dialog-code");
+    const demo = dialog.querySelector("#dialog-demo");
 
     const openProject = (index) => {
       const project = projects[index];
@@ -163,6 +192,8 @@ const projects = [
       }));
       code.hidden = !project.github;
       if (project.github) code.href = project.github;
+      demo.hidden = !project.demo;
+      if (project.demo) demo.href = project.demo;
       dialog.showModal();
     };
 
