@@ -1,5 +1,5 @@
 ---
-import { BriefcaseBusiness, Building2, GraduationCap, Users } from "lucide-astro";
+import { BriefcaseBusiness, Building2, ExternalLink, GraduationCap, Users } from "lucide-astro";
 
 const experiences = [
   {
@@ -23,7 +23,7 @@ const experiences = [
       "Acompaño a estudiantes en SQL, procedimientos almacenados, triggers, vistas y transacciones con MySQL. También construí documentación práctica publicada mediante GitHub Pages.",
     tags: ["MySQL", "SQL", "Docencia"],
     icon: GraduationCap,
-    link: "https://marcelamv2.github.io/SIS304-AUXILIATURA/",
+    link: "https://mireni-hub.vercel.app/sis304",
   },
   {
     role: "Auxiliar de docencia — Programación Básica",
@@ -35,7 +35,7 @@ const experiences = [
       "Apoyo el aprendizaje de fundamentos de programación con PSeInt y C++. Reviso trabajos, acompaño sesiones de laboratorio y doy retroalimentación individual a más de 30 estudiantes por semestre.",
     tags: ["C++", "PSeInt", "Mentoría"],
     icon: Building2,
-    link: "https://marcelamv2.github.io/SIS100-AUXILIATURA/",
+    link: "https://mireni-hub.vercel.app/sis100",
   },
   {
     role: "Human Resources Manager",
@@ -109,9 +109,10 @@ const experiences = [
                           href={experience.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          class="experience-link ml-auto text-sm font-medium"
+                          class="experience-link ml-auto inline-flex items-center gap-1.5 text-sm font-medium"
                         >
-                          Ver material <span aria-hidden="true">↗</span>
+                          Ver material
+                          <ExternalLink size={15} strokeWidth={1.8} aria-hidden="true" />
                         </a>
                       )}
                     </div>
@@ -145,12 +146,6 @@ const experiences = [
       0 0 24px color-mix(in srgb, #ec4899 35%, transparent);
   }
 
-  .experience-entry {
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  li:last-child .experience-entry { border-bottom: 0; }
-
   .experience-icon {
     color: #d8b4fe;
     border: 1px solid color-mix(in srgb, #a855f7 35%, transparent);
@@ -179,5 +174,15 @@ const experiences = [
   :global([data-theme="light"]) .experience-icon,
   :global([data-theme="light"]) .text-accent,
   :global([data-theme="light"]) .experience-tag { color: #7e22ce; }
+
+  :global([data-theme="dark"]) .experience-tag {
+    color: #e9d5ff;
+    border-color: rgba(192, 132, 252, 0.34);
+    background: rgba(168, 85, 247, 0.16);
+  }
+
+  :global([data-theme="dark"]) .experience-link {
+    color: #d8b4fe;
+  }
 
 </style>

@@ -5,16 +5,17 @@ import { Moon, Sun } from "lucide-astro";
 <header class="fixed top-0 w-full z-50">
   <div class="max-w-6xl mx-auto px-6">
 
-    <div class="mt-4 flex items-center justify-between px-6 py-3 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10">
+    <div class="header-surface mt-4 flex items-center justify-between rounded-2xl px-6 py-3 backdrop-blur-xl">
 
       <!-- LOGO -->
-      <a href="/" class="text-white font-bold">
+      <a href="/" class="header-logo font-bold">
         MiPortafolio
       </a>
 
       <!-- NAV -->
-      <nav class="hidden md:flex gap-8 text-sm text-white/70">
+      <nav class="header-nav hidden gap-8 text-sm md:flex">
         <a href="#inicio">Inicio</a>
+        <a href="#habilidades">Habilidades</a>
         <a href="#experiencia">Experiencia</a>
         <a href="#projects">Proyectos</a>
         <a href="#comunidad">Comunidad</a>
@@ -27,12 +28,13 @@ import { Moon, Sun } from "lucide-astro";
         <!-- THEME TOGGLE -->
         <button
           id="themeToggle"
-          class="w-10 h-10 flex items-center justify-center rounded-xl bg-white/10"
+          class="theme-button flex h-10 w-10 items-center justify-center rounded-xl"
+          aria-label="Cambiar tema de color"
         >
-          <Moon size={18} class="text-white" />
+          <Moon size={18} />
         </button>
 
-        <a href="#contacto" class="px-5 py-2 rounded-xl bg-purple-500 text-white text-sm">
+        <a href="#contacto" class="contact-button rounded-xl px-5 py-2 text-sm text-white">
           Contacto
         </a>
 
@@ -60,3 +62,42 @@ import { Moon, Sun } from "lucide-astro";
     setTheme(current === "dark" ? "light" : "dark");
   });
 </script>
+
+<style>
+  .header-surface {
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+    background: rgba(11, 5, 20, 0.72);
+    box-shadow: 0 12px 38px rgba(0, 0, 0, 0.14);
+  }
+
+  .header-logo { color: var(--color-text-primary); }
+  .header-nav { color: var(--color-text-secondary); }
+
+  .header-nav a {
+    transition: color 180ms ease;
+  }
+
+  .header-nav a:hover { color: var(--color-text-primary); }
+
+  .theme-button {
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+
+  .contact-button {
+    background: linear-gradient(135deg, #a855f7, #9333ea);
+    box-shadow: 0 8px 22px rgba(168, 85, 247, 0.22);
+  }
+
+  :global([data-theme="light"]) .header-surface {
+    border-color: rgba(126, 34, 206, 0.14);
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: 0 12px 38px rgba(126, 34, 206, 0.09);
+  }
+
+  :global([data-theme="light"]) .theme-button {
+    background: rgba(126, 34, 206, 0.07);
+  }
+</style>

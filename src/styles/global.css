@@ -140,15 +140,15 @@ body {
 ========================= */
 [data-theme="dark"] {
   --color-text-primary: #ffffff;
-  --color-text-secondary: rgba(255,255,255,0.55);
-  --color-text-muted: rgba(255,255,255,0.30);
-  --color-text-faint: rgba(255,255,255,0.20);
+  --color-text-secondary: rgba(255,255,255,0.74);
+  --color-text-muted: rgba(255,255,255,0.56);
+  --color-text-faint: rgba(255,255,255,0.38);
   --color-border: rgba(255,255,255,0.10);
   --color-border-hover: rgba(255,255,255,0.25);
   --color-surface: rgba(255,255,255,0.05);
   --color-badge-bg: rgba(0,0,0,0.50);
   --color-badge-text: rgba(255,255,255,0.60);
-  --color-link: rgba(255,255,255,0.50);
+  --color-link: rgba(255,255,255,0.70);
   --color-link-hover: #ffffff;
   --color-repo-private: rgba(255,255,255,0.20);
 }

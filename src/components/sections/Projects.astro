@@ -1,4 +1,6 @@
 ---
+import { ExternalLink } from "lucide-astro";
+
 const projects = [
   {
     title: "MailCraft",
@@ -22,6 +24,18 @@ const projects = [
     image: "/images/first-global.png",
     github: "https://github.com/MarcelaMV2/first-global",
     demo: "https://first-global.vercel.app/",
+  },
+  {
+    title: "ChaliTaxi",
+    mark: "CT",
+    type: "App móvil · Hackatón",
+    stack: ["Flutter", "Dart", "Android Studio"],
+    description: "Aplicación móvil para calcular un precio justo del viaje según la distancia y la tarifa oficial de Sucre.",
+    detail: "Aplicación móvil desarrollada con Flutter durante la Hackatón del Congreso Nacional de Ciencias de la Computación (CCBOL), realizada en Sucre. ChaliTaxi funciona como un taxímetro en el celular: toma la distancia recorrida como referencia y aplica la tarifa establecida para ofrecer un cobro más claro, justo y transparente.",
+    highlights: ["Mención especial en la Hackatón CCBOL 2024", "Cálculo del costo según distancia y tarifa oficial", "Aplicación móvil desarrollada con Flutter", "Desarrollo colaborativo bajo el tiempo limitado de una hackatón"],
+    image: "/images/chalitaxi.png",
+    github: null,
+    codeStatus: "Código próximamente",
   },
   {
     title: "Sansa Designs",
@@ -122,11 +136,13 @@ const projects = [
             <div class="project-actions mt-5 grid grid-cols-2 gap-3 pt-4">
               <button type="button" class="details-button rounded-xl px-4 py-2.5 text-sm font-medium" data-open-project={index}>Ver más</button>
               {project.github ? (
-                <a href={project.github} target="_blank" rel="noopener noreferrer" class="code-button rounded-xl px-4 py-2.5 text-center text-sm font-medium" data-code-link>
-                  Código <span aria-hidden="true">↗</span>
+                <a href={project.github} target="_blank" rel="noopener noreferrer" class="code-button inline-flex items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 text-center text-sm font-medium" data-code-link>
+                  Código <ExternalLink size={15} strokeWidth={1.8} aria-hidden="true" />
                 </a>
               ) : (
-                <span class="private-button rounded-xl px-4 py-2.5 text-center text-sm">Privado</span>
+                <span class="private-button rounded-xl px-4 py-2.5 text-center text-sm">
+                  {project.codeStatus ?? "Privado"}
+                </span>
               )}
             </div>
           </div>

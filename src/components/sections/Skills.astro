@@ -1,0 +1,162 @@
+---
+import {
+  Braces,
+  Database,
+  Languages,
+  Layers3,
+  ServerCog,
+  Wrench,
+} from "lucide-astro";
+
+const skillGroups = [
+  {
+    title: "Frontend",
+    description: "Mi especialidad para construir interfaces modernas y reutilizables.",
+    skills: ["Angular 17–21", "TypeScript", "RxJS", "Angular Material", "Tailwind CSS", "SSR"],
+    icon: Braces,
+    featured: true,
+  },
+  {
+    title: "Backend",
+    description: "Servicios, autenticación e integración para aplicaciones completas.",
+    skills: ["NestJS", "Node.js", "REST APIs", "GraphQL", "JWT", "RabbitMQ"],
+    icon: ServerCog,
+    featured: true,
+  },
+  {
+    title: "Bases de datos",
+    description: "Diseño, consulta y persistencia de datos.",
+    skills: ["PostgreSQL", "MySQL", "MongoDB"],
+    icon: Database,
+  },
+  {
+    title: "Arquitectura",
+    description: "Prácticas para mantener el código organizado y escalable.",
+    skills: ["Clean Architecture", "Modular Monolith", "Feature-Sliced Design", "Scrum"],
+    icon: Layers3,
+  },
+  {
+    title: "Herramientas",
+    description: "Tecnologías que acompañan mi flujo de desarrollo.",
+    skills: ["Git", "GitHub", "GitLab", "Docker", "n8n", "Figma", "Vercel"],
+    icon: Wrench,
+  },
+];
+---
+
+<section class="relative py-12 md:py-16" id="habilidades" aria-labelledby="skills-title">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="mb-12 max-w-2xl">
+      <span class="text-muted-sem font-mono text-sm uppercase tracking-widest">Stack tecnológico</span>
+      <h2 id="skills-title" class="mt-2 text-3xl font-bold text-primary md:text-4xl">
+        Tecnologías y habilidades
+      </h2>
+      <p class="mt-4 leading-relaxed text-secondary">
+        Mi stack principal combina Angular en frontend y NestJS en backend para
+        desarrollar aplicaciones web de extremo a extremo.
+      </p>
+    </div>
+
+    <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-6">
+      {skillGroups.map((group, index) => {
+        const Icon = group.icon;
+        return (
+          <article
+            class:list={[
+              "skill-card rounded-2xl p-6",
+              index < 2 ? "lg:col-span-3" : "lg:col-span-2",
+              { "skill-card-featured": group.featured },
+            ]}
+          >
+            <div class="flex items-start gap-4">
+              <span class="skill-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-xl">
+                <Icon size={21} strokeWidth={1.8} aria-hidden="true" />
+              </span>
+              <div>
+                <h3 class="text-xl font-semibold text-primary">{group.title}</h3>
+                <p class="mt-1 text-sm leading-relaxed text-secondary">{group.description}</p>
+              </div>
+            </div>
+
+            <ul class="mt-6 flex flex-wrap gap-2" aria-label={`Tecnologías de ${group.title}`}>
+              {group.skills.map((skill) => <li class="skill-tag">{skill}</li>)}
+            </ul>
+          </article>
+        );
+      })}
+
+      <article class="language-card rounded-2xl p-6 md:col-span-2 lg:col-span-6">
+        <div class="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+          <div class="flex items-center gap-4">
+            <span class="skill-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-xl">
+              <Languages size={21} strokeWidth={1.8} aria-hidden="true" />
+            </span>
+            <div>
+              <h3 class="text-lg font-semibold text-primary">Inglés · Nivel B1</h3>
+              <p class="mt-1 text-sm text-secondary">
+                Lectura de documentación técnica y comunicación básica en contextos de desarrollo.
+              </p>
+            </div>
+          </div>
+          <span class="language-badge w-fit rounded-full px-4 py-2 font-mono text-xs uppercase tracking-wider">
+            Intermedio
+          </span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .skill-card,
+  .language-card {
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    backdrop-filter: blur(16px);
+  }
+
+  .skill-card {
+    transition: transform 220ms ease, border-color 220ms ease;
+  }
+
+  .skill-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(168, 85, 247, 0.45);
+  }
+
+  .skill-card-featured {
+    background: linear-gradient(145deg, rgba(168, 85, 247, 0.13), rgba(236, 72, 153, 0.06));
+    border-color: rgba(168, 85, 247, 0.3);
+  }
+
+  .skill-icon {
+    color: #d8b4fe;
+    border: 1px solid rgba(168, 85, 247, 0.28);
+    background: rgba(168, 85, 247, 0.12);
+  }
+
+  .skill-tag,
+  .language-badge {
+    color: #d8b4fe;
+    border: 1px solid rgba(168, 85, 247, 0.24);
+    background: rgba(168, 85, 247, 0.1);
+  }
+
+  .skill-tag {
+    border-radius: 999px;
+    padding: 0.35rem 0.75rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.75rem;
+  }
+
+  :global([data-theme="light"]) .skill-icon,
+  :global([data-theme="light"]) .skill-tag,
+  :global([data-theme="light"]) .language-badge {
+    color: #7e22ce;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .skill-card { transition: none; }
+    .skill-card:hover { transform: none; }
+  }
+</style>
